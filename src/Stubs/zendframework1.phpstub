@@ -19355,12 +19355,14 @@ namespace {
          * @param mixed|null $default
          *
          * @return mixed
+         * @psalm-taint-source input
          */
         public function getParam($key, $default = null)
         {
         }
         /**
          * @return array<array-key, mixed>
+         * @psalm-taint-source input
          */
         public function getUserParams()
         {
@@ -19370,6 +19372,7 @@ namespace {
          * @param null|string $default
          *
          * @return mixed
+         * @psalm-taint-source input
          */
         public function getUserParam($key, $default = null)
         {
@@ -19385,6 +19388,7 @@ namespace {
         }
         /**
          * @return array<array-key, mixed>
+         * @psalm-taint-source input
          */
         public function getParams()
         {
@@ -19476,6 +19480,7 @@ namespace {
          * @param string $key
          *
          * @return mixed
+         * @psalm-taint-source input
          */
         public function __get($key)
         {
@@ -19484,6 +19489,7 @@ namespace {
          * @param string $key
          *
          * @return mixed
+         * @psalm-taint-source input
          */
         public function get($key)
         {
@@ -19538,6 +19544,7 @@ namespace {
          * @param mixed|null $default
          *
          * @return mixed
+         * @psalm-taint-source input
          */
         public function getQuery($key = null, $default = null)
         {
@@ -19556,6 +19563,7 @@ namespace {
          * @param mixed|null $default
          *
          * @return mixed
+         * @psalm-taint-source input
          */
         public function getPost($key = null, $default = null)
         {
@@ -19565,6 +19573,7 @@ namespace {
          * @param mixed|null $default
          *
          * @return mixed
+         * @psalm-taint-source input
          */
         public function getCookie($key = null, $default = null)
         {
@@ -19574,6 +19583,7 @@ namespace {
          * @param mixed|null $default
          *
          * @return mixed
+         * @psalm-taint-source input
          */
         public function getServer($key = null, $default = null)
         {
@@ -19583,6 +19593,7 @@ namespace {
          * @param mixed|null $default
          *
          * @return mixed
+         * @psalm-taint-source input
          */
         public function getEnv($key = null, $default = null)
         {
@@ -19597,6 +19608,7 @@ namespace {
         }
         /**
          * @return string
+         * @psalm-taint-source input
          */
         public function getRequestUri()
         {
@@ -19639,6 +19651,7 @@ namespace {
         }
         /**
          * @return string
+         * @psalm-taint-source input
          */
         public function getPathInfo()
         {
@@ -19669,6 +19682,7 @@ namespace {
          * @param mixed|null $default
          *
          * @return mixed
+         * @psalm-taint-source input
          */
         public function getParam($key, $default = null)
         {
@@ -19700,12 +19714,14 @@ namespace {
          * @param string $name
          *
          * @return null|string
+         * @psalm-taint-source input
          */
         public function getAlias($name)
         {
         }
         /**
          * @return array<array-key, mixed>
+         * @psalm-taint-source input
          */
         public function getAliases()
         {
@@ -19778,6 +19794,7 @@ namespace {
         }
         /**
          * @return false|string
+         * @psalm-taint-source input
          */
         public function getRawBody()
         {
@@ -24184,6 +24201,7 @@ namespace {
          * @param mixed $bind
          *
          * @return Zend_Db_Statement_Interface
+         * @psalm-taint-sink sql $sql
          */
         public function query($sql, $bind = array())
         {
@@ -24213,6 +24231,8 @@ namespace {
          * @return int
          *
          * @throws Zend_Db_Adapter_Exception
+         * @psalm-taint-sink sql $table
+         * @psalm-taint-sink sql $bind
          */
         public function insert($table, array $bind)
         {
@@ -24225,6 +24245,9 @@ namespace {
          * @return int
          *
          * @throws Zend_Db_Adapter_Exception
+         * @psalm-taint-sink sql $table
+         * @psalm-taint-sink sql $bind
+         * @psalm-taint-sink sql $where
          */
         public function update($table, array $bind, $where = '')
         {
@@ -24234,6 +24257,8 @@ namespace {
          * @param mixed $where
          *
          * @return int
+         * @psalm-taint-sink sql $table
+         * @psalm-taint-sink sql $where
          */
         public function delete($table, $where = '')
         {
@@ -24242,6 +24267,7 @@ namespace {
          * @param mixed $where
          *
          * @return string
+         * @psalm-taint-sink sql $where
          */
         public function _whereExpr($where)
         {
@@ -24264,6 +24290,8 @@ namespace {
          * @param mixed|null $fetchMode
          *
          * @return array<array-key, mixed>
+         * @psalm-taint-sink sql $sql
+         * @psalm-taint-sink sql $bind
          */
         public function fetchAll($sql, $bind = array(), $fetchMode = null)
         {
@@ -24274,6 +24302,8 @@ namespace {
          * @param mixed|null $fetchMode
          *
          * @return mixed
+         * @psalm-taint-sink sql $sql
+         * @psalm-taint-sink sql $bind
          */
         public function fetchRow($sql, $bind = array(), $fetchMode = null)
         {
@@ -24283,6 +24313,8 @@ namespace {
          * @param mixed $bind
          *
          * @return array<array-key, mixed>
+         * @psalm-taint-sink sql $sql
+         * @psalm-taint-sink sql $bind
          */
         public function fetchAssoc($sql, $bind = array())
         {
@@ -24292,6 +24324,8 @@ namespace {
          * @param mixed $bind
          *
          * @return array<array-key, mixed>
+         * @psalm-taint-sink sql $sql
+         * @psalm-taint-sink sql $bind
          */
         public function fetchCol($sql, $bind = array())
         {
@@ -24301,6 +24335,8 @@ namespace {
          * @param mixed $bind
          *
          * @return array<array-key, mixed>
+         * @psalm-taint-sink sql $sql
+         * @psalm-taint-sink sql $bind
          */
         public function fetchPairs($sql, $bind = array())
         {
@@ -24310,6 +24346,8 @@ namespace {
          * @param mixed $bind
          *
          * @return string
+         * @psalm-taint-sink sql $sql
+         * @psalm-taint-sink sql $bind
          */
         public function fetchOne($sql, $bind = array())
         {
@@ -24488,6 +24526,7 @@ namespace {
          * @param int $offset
          *
          * @return string
+         * @psalm-taint-sink sql $sql
          */
         public abstract function limit($sql, $count, $offset = 0);
         /**
@@ -26841,6 +26880,7 @@ namespace {
         }
         /**
          * @return void
+         * @psalm-taint-sink sql $sql
          */
         public function _prepare($sql)
         {
@@ -26849,6 +26889,7 @@ namespace {
          * @param string $sql
          *
          * @return void
+         * @psalm-taint-sink sql $sql
          */
         public function _parseParameters($sql)
         {
@@ -26857,6 +26898,7 @@ namespace {
          * @param string $sql
          *
          * @return string
+         * @psalm-taint-sink sql $sql
          */
         public function _stripQuoted($sql)
         {
@@ -63770,6 +63812,7 @@ namespace {
         }
         /**
          * @return string
+         * @psalm-taint-source input
          */
         public function getValue()
         {
@@ -63894,6 +63937,7 @@ namespace {
          * @param int $ret_as
          *
          * @return array<array-key, mixed>|string
+         * @psalm-taint-source input
          */
         public function getAllCookies($ret_as)
         {
@@ -63905,6 +63949,7 @@ namespace {
          * @param int|null $now
          *
          * @return array<array-key, mixed>|string
+         * @psalm-taint-source input
          */
         public function getMatchingCookies($uri, $matchSessionCookies = true, $ret_as, $now = null)
         {
@@ -63915,6 +63960,7 @@ namespace {
          * @param int $ret_as
          *
          * @return Zend_Http_Cookie|string
+         * @psalm-taint-source input
          */
         public function getCookie($uri, $cookie_name, $ret_as)
         {
@@ -137204,6 +137250,7 @@ namespace {
          * @return void
          *
          * @throws Zend_View_Exception
+         * @psalm-taint-sink html $val
          */
         public function __set($key, $val)
         {
